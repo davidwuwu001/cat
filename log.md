@@ -33,3 +33,4 @@
 - [x] 修复 Vercel 部署构建错误（ImageUploader组件缺少onBatchCrop属性）
 - [x] 修复 Vercel 部署构建错误（main.tsx导入路径问题）
 - [x] 修复 Vercel 部署配置问题（移除builds配置以启用零配置部署）
+- [x] 修复 Vercel 部署后无法查看内容的问题（修复路由配置以正确处理静态资源文件）
