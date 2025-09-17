@@ -12,6 +12,18 @@
 - 批量下载裁剪结果
 - 支持使用原图宽度选项，裁剪数量根据高度自动计算
 
+## GitHub 仓库
+
+项目代码已同步到 GitHub 仓库: [https://github.com/davidwuwu001/cat.git](https://github.com/davidwuwu001/cat.git)
+
+## 部署到 Vercel
+
+本项目已配置好 Vercel 部署所需的所有文件，可以直接部署到 Vercel 平台。
+
+## GitHub 仓库
+
+项目代码已同步到 GitHub 仓库: https://github.com/davidwuwu001/cat.git
+
 ## 开发计划
 
 - [x] 项目初始化
@@ -32,6 +44,8 @@
 - [x] 修复批量下载功能，使用zip打包方式下载所有图片
 - [x] 增加批量裁剪图片的功能，支持一次上传多张图片并应用相同的裁剪设置
 - [x] 改进裁剪设置组件，添加使用原图宽度选项，裁剪数量根据高度自动计算
+- [x] 初始化 Git 仓库并同步到 GitHub 仓库
+- [x] 添加 Vercel 部署配置文件
 
 ## 如何运行
 
