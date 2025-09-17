@@ -6,7 +6,7 @@ interface ImageUploaderProps {
   fileInputRef: React.RefObject<HTMLInputElement>;
 }
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload, fileInputRef }) => {
+const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload, onBatchCrop, fileInputRef }) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;

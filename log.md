@@ -30,3 +30,5 @@
 - [x] 添加 Vercel 部署配置文件，确保正确部署到 Vercel 平台
 - [x] 推送 Vercel 配置文件到 GitHub 仓库
 - [x] 同步文档更新到 GitHub 仓库
+- [x] 修复 Vercel 部署构建错误（ImageUploader组件缺少onBatchCrop属性）
+- [x] 修复 Vercel 部署构建错误（main.tsx导入路径问题）
