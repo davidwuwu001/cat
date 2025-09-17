@@ -81,6 +81,51 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({ onCrop, onReset, isProces
     }
   };
 
+  /**
+   * 批量压缩并下载所有图片
+   * 将所有图片压缩后打包成zip文件下载
+   */
+  const handleCompressAndDownloadAll = async () => {
+    if (croppedImages.length === 0) return;
+    
+    setIsCompressing(true);
+    try {
+      // 创建一个zip文件
+      const zip = new JSZip();
+      
+      // 依次处理每张图片的压缩
+      for (let i = 0; i < croppedImages.length; i++) {
+        const imageData = croppedImages[i];
+        
+        // 将 base64 转换为 Blob
+        const response = await fetch(imageData);
+        const blob = await response.blob();
+        
+        // 创建一个File对象用于压缩
+        const file = new File([blob], `image-${i + 1}.png`, { type: blob.type });
+        
+        // 压缩图片
+        const compressedBlob = await imageCompression(file, {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true
+        });
+        
+        // 将压缩后的图片添加到zip文件中
+        zip.file(`compressed-cropped-image-${i + 1}.jpg`, compressedBlob);
+      }
+      
+      // 生成zip文件并下载
+      const content = await zip.generateAsync({ type: 'blob' });
+      saveAs(content, 'compressed-cropped-images.zip');
+    } catch (error) {
+      console.error('批量压缩下载失败:', error);
+      alert('批量压缩下载失败，请重试');
+    } finally {
+      setIsCompressing(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-semibold text-gray-700">操作</h2>
@@ -113,11 +158,7 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({ onCrop, onReset, isProces
             </button>
             
             <button
-              onClick={() => {
-                croppedImages.forEach((image, index) => {
-                  handleCompressAndDownload(image, index);
-                });
-              }}
+              onClick={handleCompressAndDownloadAll}
               disabled={isCompressing}
               className="px-6 py-3 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
