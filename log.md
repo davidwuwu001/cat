@@ -29,3 +29,4 @@
 - [x] 初始化 Git 仓库并同步到 GitHub 仓库: https://github.com/davidwuwu001/cat.git
 - [x] 添加 Vercel 部署配置文件，确保正确部署到 Vercel 平台
 - [x] 推送 Vercel 配置文件到 GitHub 仓库
+- [x] 同步文档更新到 GitHub 仓库
